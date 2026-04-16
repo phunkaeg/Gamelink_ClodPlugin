@@ -1,0 +1,1025 @@
+we have had some discussions about Cliffs of Dover using DeviceLink for its Telemetry output in the past - some of which was not implemented in the Team Fusion source code hand over. 
+
+I I'm just digging a bit deeper and thought I'd have a look a what people were talking about back when it WAS still in the game and actively being discussed - lots of the old forums are long gone, so i need to dig into the Wayback machine. 
+
+So, I'll start by just pasting some big blocks of text which you may have some better idea of what they are saying. 
+
+In an ATAG forum circa 2013:
+
+Devicelink for 'old' IL2 was released with only a limited amount of data available when in online mode. Oleg's original plan was to extend this data available online at a later date- however some of the more vocal , competitive online types howled blue murder at the prospect (CHEAT CHEAT), and **** anyone else's needs cos their type of flying is IMPORTANT - Oleg's ready room 'debates' never were civilised
+Basically I think they scared Oleg off and no further work was done on what was a great, innovative idea which had great potential for pitbuilders etc.
+So in old IL2 there is a fixed data set of outputs, which is heavily restricted online - no instrument/plane orientation type data.
+There is a long thread at UBII about devicelink- some may be useful
+http://forums.ubi.com/showthread.php...estions-thread
+and if you have IL2 there is a devicelink readme in the games root folder.
+
+With CoD Oleg returned to the theme and came up with a huge variety of data that can be read from sim (via scripts), However there is no way to write data TO the sim (so self made autopilots etc can't be done- one of the complaints about what could possibly be done )
+What Colander has done for CoD. is make the instrument values for a plane more available by memory mapping these values. The plane must have the instrument in it to output a value (so no artificial horizon information available in a 109). Hopefully this should be enough to make instrument panels , motion pits etc- tho there is no G values available, or direct orientation, it must come from the planes instruments and could thus give some 'odd' readings with a toppled artificial horizon.
+
+Hope some of rhis is useful
+That link to the UBI forum  was in the wayback machine here:
+
+Post by TAGERT 2005:
+First a little DeviceLink discription/summary. The initial and/or real purpose of DeviceLink is to provide the home build cockpit guys with a way to send and receive data to/from IL2-PF. DeviceLink is the gateway between the real world gauges and levers and the simulation world gauges and levers. With your own hardware and a little software you can read out the simulation altitude via DeviceLink and use it to cause the real altitude gauge in your home build cockpit to display the altitude. You could also have a switch on your home build cockpit that is used to raise and lower the landing gear. In short, you could have a gauge and or lever in a home build cockpit to control just about everything in the simulation.
+
+That is the initial and/or real purpose of DeviceLink, but there is an added benefit to DeviceLink.
+
+You can capture all that data to a file. Then look at (plot) the data to see what is actually going on as opposed to what people *think* is going on. This comes in very handy to see if a bug is a true bug, or just another case of the user misconception of what was actually going on.
+
+My first contribution to this thread shall be a cut-n-paste from a post by lurker_hlb3 that tells you step by step how to install and setup UDPSpeed. The UDPSpeed program works in real time to display these values to the screen and/or save them to a file. UDPSpeed also works during playback of track files! Which comes in very handy during testing.
+
+There are other progams out there that interface with DeviceLink. But, UDPSpeed is a good place to start.
+
+lurker_hlb3 from SimHQ:
+Recently I was reading the following thread here in the forums:
+
+2.04 Easter Eggs / Unlisted Changes
+http://www.simhq.com/simhq3/sims/boards/bbs/ultimatebb....ic;f=98;t=011402;p=2
+
+
+Within the thread there is a pictures of a Bf109 with some extra read outs on the on the screen. Upon further investigation, downloaded the UPDSpeed program ( version 1.1 ) from the following site:
+
+http://www.barans.ru/upload/alezz/UDPSpeed/UDPSpeed.zip
+
+
+To my surprise I found that this tool developed by Alezz and Hruks (from the Ukraine and Russia) was amazingly useful when I was flying FB. Its open architecture allows great flexibility on ââ‚¬Å“whatââ‚¬Â and ââ‚¬Å“howââ‚¬Â information is displayed. You can setup a variety of customized displays based different types of aircraft or what ever you. I personally have 4 different setups for the aircraft that I like to fly ( Bf109s, Fw190ââ‚¬™s / Ta152, and LW Jets and Rockets ).
+
+So what follows is information that Iââ‚¬™ve learning about this program and how to set it up.
+
+
+Warning
+
+You must have AEP loaded and patched to 2.01 or this will not work.
+
+
+Part I
+
+1. Down load UPDSpeed at http://www.barans.ru/upload/alezz/UDPSpeed/UDPSpeed.zip
+
+2. create a working directory some where on your system.
+
+3. unzip UPDSpeed within your working directory.
+
+4. you will find 6 directories, 1 .ini file and 1.exe
+
+Alt
+Azimut
+Energy
+Fuel
+Speed
+Variometer
+
+UDPSpeed.ini
+UPDSpeed.exe
+
+5. before you process go to your FB directory and add the following to your conf.ini file:
+
+[DeviceLink]
+port=21100
+IPS=127.0.0.1
+host=127.0.0.1
+
+6. return to your working directory and launch UPDSpeed.exe program
+
+7. after launch you will see 6 Russian style Instrument
+
+8. place your mouse pointer over the Instrument and select the right mouse button
+
+9. you will see the following:
+
+Mode >
+Show >
+Additional >
+About
+Exit
+
+10. Place mouse pointer over Mode > and you will see:
+
+Pribor >
+Label >
+
+Place mouse pointer over Label and you will see:
+Vertical
+Horizontal
+
+
+Select Vertical
+
+11. The Instrument now turn into labels:
+
+A:0.0
+C:0.0
+E:0.0
+F:0.0
+S:0.0
+V:0.0
+
+Red labels on a black background.
+
+A=Altitude
+C=Course
+E=Energy
+F=Fuel
+S=Speed
+V=Variometer
+
+Note:
+The Mode option is for displaying UPDSpeed data in ether Instrument (Pribor) or Label mode (Label) and either in a Vertical or Horizontal manner
+
+12. Place mouse pointer over Label display and using the right mouse select Model > Label > Horizontal
+
+you will note that the labels now display in a Horizontal manner
+
+13 Place mouse pointer over Label display and using the left mouse you can now move the display around to any where on the display and the UDPSpeed program will ââ‚¬Å“rememberââ‚¬Â the location and will display it there until remove it. Also when you relaunch UDPSpeed the information will be at the same location.
+
+14. Place mouse pointer over Label display and using the right mouse select Show
+
+you will see the number 1 through 6 displayed with a check by each.
+
+15. select the number 1
+
+16. you will note that the A:0.0 as disappeared . ( special note: if the labels goes all black, just exit using the right mouse button and then restart UDPSpeed )
+
+Note: The Show option allows you to pick and choose ââ‚¬Å“whatââ‚¬Â you want to display
+
+17. Place mouse pointer over Label display and using the right mouse select Additional > Pribors > 2
+
+you will see a black square or an Instrument displayed.
+
+Place mouse pointer over black square or Instrument and select the right mouse button.
+
+Select mode and then label and the black square or a Instrument will turn into a label.
+
+18. Place mouse pointer over ââ‚¬Å“Additionalââ‚¬Â label and you will also the ââ‚¬Å“Hideââ‚¬Â & ââ‚¬Å“Exitââ‚¬Â options
+
+19. Place mouse pointer over Label display and using the right mouse and you will see the ââ‚¬Å“aboutââ‚¬Â option.This provides info about the creators of this program.
+
+20. Place mouse pointer over Label display and using the right mouse and you will see the ââ‚¬Å“exitââ‚¬Â option.
+
+Part II.
+
+How to customize UPDSpeed for FB AEP 2.01 +
+
+
+First the name of the runtime directory where UDPSpeed program plus the ini file and the instrument sub directories live can be name what ever you like. I personnel have four different custom UPDSpeed directory (i.e. UPDS_bf109, UDPS_fw190, UDPS_K4_D9, UDPS_jets) for the different LW aircraft that I fly.
+
+Once you have created your runtime directory, place the UDPSpeed.exe and UDPSpeed.ini into the directory. Now this is ââ‚¬Å“IMPORTANTââ‚¬Â, the order of the instrument sub directories will control the order that the instrument/labels will be displayed. I personally use a
+number plus the under score symbol and the name of the instrument/labels to control the order of my label displays. Example:
+
+1_Course
+2_Speed
+3_Alimeter
+4_gload
+
+Again you will note these sub directories can be named what ever you want. The sub directory that you want to use as your template for these instrument sub directories is the Azimut directory from the UPDSpeed.zip file,
+
+Once you look inside the Azimut directory, you will find two bmp files and the 4C.ini file. The 4C.ini file is the key to create each of you custom instruments. Open the 4C.ini with notepad/wordpad and you will see the following:
+
+[Main]
+Prefix=C:
+ArrowCounter=1
+Bitmap=bg_crs.bmp
+Mode=1
+PosX=80
+PosY=50
+AddPanel=0
+Visible=1
+RequestString=/42
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+PosX=88
+PosY=87
+CenterX=62
+CenterY=50
+DataIndex=42
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+
+
+The following is a detailed Breakdown of the 4C.ini file
+
+[Main]
+
+Prefix=C:
+
+The description of what is being represented Example if this was Aircraft Course then you and change the C to be HDG or CUS or
+what ever you want.
+
+Warning; recommend you use 5 character or less due to label display restrictions
+
+ArrowCounter=1
+Bitmap=bg_crs.bmp
+
+Number or Arrows used by program when in Instrument Mode (Pribor) and Which bmp graphic to use.
+
+Mode=1
+
+I have not figured out what this means
+
+PosX=80
+PosY=50
+
+Position on the monitor
+
+
+AddPanel=0
+
+Is it be used by the Additional sub-menu
+
+Visible=1
+
+Is the label/ Instrument displayed
+
+
+RequestString=/42
+
+The value that is being broadcasted via UDP from FB. The example here is Aircraft Course ( Azimuth )
+
+See later in this doc for detail breakdown of all the useful values that can be added here
+
+
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+
+Graphic to be used if in instrument/Pribor mode
+
+PosX=88
+PosY=87
+CenterX=62
+CenterY=50
+
+Position of instrument/Pribor
+
+
+DataIndex=42
+
+Same as RequestString in the Main section
+
+WARNING
+For things to work correctly the RequestString and the DataIndex have the same value.
+
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+Data for the display when instrument/Pribor mode
+
+
+More on how to customize this file later
+
+Now go back to your runtime directory and open the UDPSpeed.ini file with notepad/wordpad. You Will see the following:
+
+
+UDPSpeed.ini
+
+[UDP]
+IP=127.0.0.1
+Port=21100
+
+[Log]
+Write=0
+Name=C:\fbapi.log
+
+[Modes]
+VerticalMode=0
+ModeOfPribor=1
+DemoMode=0
+
+[Window]
+PosX=17
+PosY=9
+
+[Labels]
+Color=255
+Brush=0
+FontSize=14
+
+[Main]
+TimerMS=1001
+
+[Variables]
+Mass=1
+
+
+Breakdown
+
+[UDP]
+IP=127.0.0.1
+Port=21100
+
+IP of the computer, which is running UDPSpeed. 127.0.0.1 is equal to your local computer The port that UDPSpeed gets its FB information
+
+
+[Log]
+Write=1
+Name=C:\fbapi.log
+
+Write=? Is to enable/disable logging of FB data that UDPSpeed is receiving 1=on 0=off Name=xxx is the location of the log
+
+
+[Modes]
+VerticalMode=0
+ModeOfPribor=1
+DemoMode=0
+
+VerticalMode=x If UDPSpeed is displaying label/ Instrument information in a Vertical or Horizontal mode. 0= Horizontal 1=Vertical
+
+[Window]
+PosX=17
+PosY=9
+
+Position of the main UDPSpeed label/ Instrument information window
+
+[Labels]
+Color=255
+Brush=0
+FontSize=14
+
+Color and size of data when in Label mode
+Color=XXX is the RGB value of Label ( 255 is RED )
+Brush= contrast of the color value ( 0 is = to black )
+FontSize=XX how big the labels are.
+
+Special Note: I personnel leave the Color/Bush values alone, but change the Font value to 10.
+
+[Main]
+TimerMS=1001
+
+Hoe often the data is updated in milliseconds ( 1000 ms = 1 second )
+
+[Variables]
+Mass=1
+
+This has something to do with the ââ‚¬Å“Energyââ‚¬Â instrument in the original
+
+UPDSpeed.zip download
+
+Now its time to create your custom instrument sub-directories. But first a breakdown of the useful instrument from DevicesLink.txt
+
+Breakdown of the codes for Instrument data that are transmitted via Device Link interface in FB.Special Note: These are only the ones
+that I have tested and recommend for uses with UDPSpeed. You can see ALL the values listed in the DeviceLink.txt [located in FB main director]
+
+speedometer 30 [kph]
+variometer 32 ( how fast your climbing or diving ) [ meters / second ]
+altimeter 40 [meters]
+azimuth 42 [ Degrees ] ( Aircraft course )
+fuel 50 [ Kilograms ]
+overload 52 [ G load ]
+rpm 64 [ Engine RPM ]
+
+SPECIAL NOTE: When used with jets the values are ââ‚¬Å“NOTââ‚¬Â accurate.
+
+manifold 66 [millibars]
+temp_oilin 68 [deg.C]
+temp_oilout 70 [deg.C]
+temp_water 72 [deg.C]
+
+SPECIAL NOTE: When used with jets the value is for Tail Pipe Temperature
+
+temp_cylinders 74 [deg.C]
+
+
+Recommend Director names and content of the 4C.ini files
+
+Altimeter
+
+Director Name: X_ Altimeter
+4C.ini content
+
+[Main]
+Prefix=Alt:
+ArrowCounter=1
+Bitmap=bg_crs.bmp
+Mode=1
+PosX=883
+PosY=674
+AddPanel=0
+Visible=1
+RequestString=/40
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+PosX=86
+PosY=87
+CenterX=62
+CenterY=50
+DataIndex=40
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+manifold
+
+Director Name: X_ Ata
+4C.ini content
+
+[Main]
+Prefix=ATA:
+ArrowCounter=1
+Bitmap=bg_crs.bmp
+Mode=1
+PosX=883
+PosY=617
+AddPanel=0
+Visible=1
+RequestString=/66
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+PosX=86
+PosY=87
+CenterX=62
+CenterY=50
+DataIndex=66
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+
+Azimuth
+
+Director Name: X_ Ata
+4C.ini content
+
+[Main]
+Prefix=HDG:
+ArrowCounter=1
+Bitmap=bg_crs.bmp
+Mode=1
+PosX=883
+PosY=674
+AddPanel=0
+Visible=1
+RequestString=/42
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+PosX=86
+PosY=87
+CenterX=62
+CenterY=50
+DataIndex=42
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+temp_cylinders
+
+Director Name: X_ Ata
+4C.ini content
+
+
+[Main]
+Prefix=Head:
+ArrowCounter=1
+Bitmap=bg_crs.bmp
+Mode=1
+PosX=883
+PosY=674
+AddPanel=0
+Visible=1
+RequestString=/68
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+PosX=86
+PosY=87
+CenterX=62
+CenterY=50
+DataIndex=68
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+Fuel
+
+Director Name: X_ Ata
+4C.ini content
+
+[Main]
+Prefix=Fuel:
+ArrowCounter=1
+Bitmap= bg_crs.bmp
+PosX=854
+PosY=10
+Mode=1
+AddPanel=0
+Visible=1
+RequestString=/50
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+PosX=86
+PosY=87
+CenterX=62
+CenterY=50
+DataIndex=50
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+Overload
+
+Director Name: X_ gload
+4C.ini content
+
+[Main]
+Prefix=G's:
+ArrowCounter=1
+Bitmap=bg_crs.bmp
+Mode=1
+PosX=64
+PosY=41
+AddPanel=0
+Visible=1
+RequestString=/52
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+PosX=86
+PosY=87
+CenterX=62
+CenterY=50
+DataIndex=52
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+
+Speedometer
+
+Director Name: X_ speed
+4C.ini content
+
+[Main]
+Prefix=IAS:
+ArrowCounter=1
+Bitmap=bg_crs.bmp
+Mode=1
+PosX=883
+PosY=674
+AddPanel=0
+Visible=1
+RequestString=/30
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+PosX=86
+PosY=87
+CenterX=62
+CenterY=50
+DataIndex=30
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+temp_oilin
+Director Name: X_ oil_in
+4C.ini content
+
+[Main]
+Prefix=oil_in:
+ArrowCounter=1
+Bitmap=bg_crs.bmp
+Mode=1
+PosX=883
+PosY=674
+AddPanel=0
+Visible=1
+RequestString=/68
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+PosX=86
+PosY=87
+CenterX=62
+CenterY=50
+DataIndex=68
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+temp_oilout
+
+Director Name: X_ oil_out
+4C.ini content
+
+[Main]
+Prefix=oil_out:
+ArrowCounter=1
+Bitmap=bg_crs.bmp
+Mode=1
+PosX=883
+PosY=674
+AddPanel=0
+Visible=1
+RequestString=/70
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+PosX=86
+PosY=87
+CenterX=62
+CenterY=50
+DataIndex=70
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+Rpm
+
+Director Name: X_ rpm
+4C.ini content
+
+[Main]
+Prefix=RPM:
+ArrowCounter=1
+Bitmap=bg_crs.bmp
+Mode=1
+PosX=64
+PosY=41
+AddPanel=0
+Visible=1
+RequestString=/64
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+PosX=86
+PosY=87
+CenterX=62
+CenterY=50
+DataIndex=64
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+
+Variometer
+
+Director Name: X_ variometer
+4C.ini content
+
+[Main]
+Prefix=Var:
+ArrowCounter=1
+Bitmap= bg_crs.bmp
+PosX=400
+PosY=50
+Mode=1
+AddPanel=0
+Visible=1
+RequestString=/32
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+PosX=86
+PosY=87
+CenterX=62
+CenterY=50
+DataIndex=32
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+
+temp_water
+
+Director Name: X_ water
+4C.ini content
+
+[Main]
+Prefix=H2O:
+ArrowCounter=1
+Bitmap=bg_crs.bmp
+Mode=1
+PosX=64
+PosY=40
+AddPanel=0
+Visible=1
+RequestString=/72
+
+[Arrow1]
+//ÃÅ*îìÃÂ¯Ã ñ
+Bitmap=arrow_cur1.bmp
+PosX=86
+PosY=87
+CenterX=62
+CenterY=50
+DataIndex=72
+Data1=0
+Angle1=90
+Data2=360
+Angle2=450
+
+
+Part IV
+
+Now that youââ‚¬™ve created your custom runtime UDPSpeed directories you can place them ââ‚¬Å“anywhereââ‚¬Â within your computer. I personally have them in my main FB directory. For everthing to work correctly you need to start UDPSpeed and then position your labels where you want them.
+
+Once this is done startup FB
+
+
+Enjoy
+
+Lurker
+
+Bearcat......ty very much for this. Tagert...a veruy good start with UDPSpeed. Let everyone be aware also that another program is out there called UDPGraph which is far more flexible. It can be found in that same article at SimHq just farther down the thread. Also......everyone be aware that UDPSpeed and UDPGraph only work offline. No one ahs found a way to make it work online yet that I know of.
+
+From another 2013 post on the ATAG forum:
+
+ TF DeviceLink like interface - post by ATAG_Colander
+
+ust another goodie in the TF release. A "DeviceLink" like readonly interface.
+
+- It accepts the same parameters as the "GetParameters" function for missions.
+- Only the data available in instruments for the airplane being flown will be available. This means, for example, that if you the plane you are flying does not have an altimeter, you will not receive values for the altimeter.
+- It has not been fully tested so it might have some bugs (i.e. missing information which is available in instruments).
+- Run it in a timer to get periodic updates.
+Those who know programming will know what can be done with it 
+
+using System;
+using System.Collections.Generic;
+
+using System.Linq; 
+using System.Text;
+using System.IO.MemoryMappedFiles;
+
+namespace DeviceLinkServer
+{
+    public class GameCommunications
+    {
+        private MemoryMappedFile m_MemoryMappedFile;
+        private MemoryMappedViewAccessor m_MemoryMappedViewAccessor;
+        public enum ParameterTypes
+        {
+            Nil,
+            M_Random,
+            M_Shake,
+            M_CabinDamage,
+            M_CabinState,
+            M_NamedDamage,
+            M_SystemWear,
+            M_Health,
+            C_Steering,
+            C_Brake,
+            C_Throttle,
+            C_Trigger,
+            C_Pitch,
+            C_Mix,
+            C_WaterRadiator,
+            C_OilRadiator,
+            C_RadiatorAutomation,
+            C_PitchAutomation,
+            C_Compressor,
+            C_Afterburner,
+            C_BoostEnabler,
+            C_SlowRunningCutOut,
+            C_Magneto,
+            C_Feather,
+            C_CarbHeater,
+            C_HatchDoor,
+            C_HatchJettison,
+            C_Timer,
+            C_Timer1,
+            C_Aileron,
+            C_Elevator,
+            C_Rudder,
+            C_AileronTrim,
+            C_ElevatorTrim,
+            C_RudderTrim,
+            C_TailwheelLock,
+            C_LandingFlap,
+            C_LeadingEdgeSlats,
+            C_Undercarriage,
+            C_UndercarriageEmergency,
+            C_BombBayDoor,
+            C_Airbrake,
+            C_FuelTankSelector,
+            C_TelepirometroElettrico,
+            C_AltimeterPinion,
+            C_AnemometroPinion,
+            C_BombSight,
+            C_Sight,
+            C_Bombenabwurfgerat,
+            C_KraftstoffSelector,
+            C_LiquidGauge0,
+            C_LiquidGauge1,
+            C_PriLights,
+            C_SecLights,
+            C_SightLights,
+            C_PitotHeater,
+            C_Handpumpe,
+            C_RadTXRX,
+            C_RadPriNav,
+            C_RadSecNav,
+            C_Kurssteuerung,
+            A_Steering,
+            A_Brake,
+            A_Aileron,
+            A_Elevator,
+            A_Rudder,
+            A_AileronTrim,
+            A_ElevatorTrim,
+            A_RudderTrim,
+            A_Undercarriage,
+            A_UndercarriageShock,
+            A_UndercarriageWheel,
+            A_HatchDoor,
+            A_BombBayDoor,
+            A_ImpellerAngle,
+            A_ImpellerAngularVelocity,
+            A_ImpellerUnfold,
+            A_LandingFlap,
+            A_Airbrake,
+            A_EngineAirRadiator,
+            A_EngineWaterRadiator,
+            A_EngineOilRadiator,
+            A_LeadingEdgeSlat,
+            Z_Coordinates,
+            Z_Orientation,
+            Z_Overload,
+            Z_AltitudeAGL,
+            Z_AltitudeMSL,
+            Z_VelocityIAS,
+            Z_VelocityTAS,
+            Z_VelocityMach,
+            Z_AmbientAirTemperature,
+            S_ElectricVoltage,
+            S_ElectricIncandescingRatio,
+            S_ElectricAmperage,
+            S_ElectricPrimaryPitLight,
+            S_ElectricSecondaryPitLight,
+            S_ElectricSightLight,
+            S_FuelReserve,
+            S_HatchDoor,
+            S_UndercarriageValve,
+            S_PneumoContainerPressure,
+            S_PneumoLinePressure,
+            S_HydroPressure,
+            S_HydroReserve,
+            S_Sturzanlage,
+            S_GunOperation,
+            S_GunReserve,
+            S_GunClipReserve,
+            S_BombReserve,
+            S_Fenster,
+            S_PitotHeater,
+            S_Bombenabwurfgerat,
+            S_Turret,
+            M_Reserved000,
+            M_Reserved001,
+            M_Reserved002,
+            M_Reserved003,
+            M_Reserved004,
+            M_Reserved005,
+            M_Reserved006,
+            M_Reserved007,
+            M_Reserved008,
+            M_Reserved009,
+            M_Reserved00A,
+            M_Reserved00B,
+            M_Reserved00C,
+            M_Reserved00D,
+            M_Reserved00E,
+            M_Reserved00F,
+            M_Reserved010,
+            M_Reserved011,
+            M_Reserved012,
+            M_Reserved013,
+            M_Reserved014,
+            M_Reserved015,
+            M_Reserved016,
+            M_Reserved017,
+            M_Reserved018,
+            M_Reserved019,
+            M_Reserved01A,
+            M_Reserved01B,
+            M_Reserved01C,
+            M_Reserved01D,
+            M_Reserved01E,
+            M_Reserved01F,
+            I_Timer,
+            I_AmbientTemp,
+            I_EngineRPM,
+            I_EngineManPress,
+            I_EngineBoostPress,
+            I_EngineWatPress,
+            I_EngineOilPress,
+            I_EngineFuelPress,
+            I_EngineWatTemp,
+            I_EngineRadTemp,
+            I_EngineOilTemp,
+            I_EngineOilRadiatorTemp,
+            I_EngineTemperature,
+            I_EngineCarbTemp,
+            I_Pitch,
+            I_VelocityIAS,
+            I_Altitude,
+            I_Variometer,
+            I_Slip,
+            I_MagneticCompass,
+            I_RepeaterCompass,
+            I_Peilzeiger,
+            I_FuelReserve,
+            I_LiquidReserve,
+            I_Voltamperemeter,
+            I_Voltmeter,
+            I_Amperemeter,
+            I_HydroPressure,
+            I_HydroEmPressure,
+            I_Turn,
+            I_AH,
+            I_DirectionIndicator,
+            I_SlavedCompass,
+            I_Suction,
+            I_AFN,
+            I_ADF,
+            I_RDF,
+            I_RMI,
+            I_FLRC,
+            I_Kurssteuerung,
+            I_BombSight
+        }
+
+        public GameCommunications()
+        {
+            m_MemoryMappedFile = null;
+            m_MemoryMappedViewAccessor = null;
+        }
+
+
+        private void OpenMMF()
+        {
+            try
+            {
+                m_MemoryMappedFile = MemoryMappedFile.OpenExisting("CLODDeviceLink", MemoryMappedFileRights.Read);
+                m_MemoryMappedViewAccessor = m_MemoryMappedFile.CreateViewAccessor(0, 10000 * sizeof(double), MemoryMappedFileAccess.Read);
+            }
+            catch(Exception e)
+            {
+                return;
+            }
+        }
+
+        public double GetParameter(ParameterTypes ParameterType, int SubType)
+        {
+            if (m_MemoryMappedFile == null)
+                    OpenMMF();
+
+            try
+            {
+                return m_MemoryMappedViewAccessor.ReadDouble((((int)ParameterType * 10) + SubType) * sizeof(double));
+            }
+            catch (Exception e)
+            {
+                return -99999.99999;
+            }
+        }
+    }
+}
+
+I believe compass value has a problem- which parameter are you trying to read as there are several possibilities.
+
+Looking through some old scripting I used I seem to have used
+aircraft.getParameter(part.ParameterTypes.I_Repeat erCompass, 0);
+rather than the magnetic compass value. 
+
+So I tried to use this to write a bridge app that would allow UDPSpeed to work with IL2CoD ... however, most of these parameters do not seem to work properly. I tried all the I_* params and I_MagneticCompass and I_EngineRPM, do seem to work ... but that was about it. For example I_VelocityIAS, I_Altitude, I_Variometer, I_Slip etc. all report 0 in all 10 sub-params. Which is a shame, because being able to use UDPSpeed with IL2CoD is something I'm sure many people would be interested in
+
+Try I_VelocityIAS with -1 as the parameter.
+
+Okay yes that works. That's pretty odd, some of the parameters are accessible at 0 index ... some at -1. Why not put all of them starting at index 0?
+
+So the only other issue is that I_VelocityIAS (and many of the other parameters) change units depending on what plane you are in. So in a Bf109 I_VelocityIAS gives kmph, in a Spitfire it gives mph. This makes compatibility with UDPSpeed complicated, because IL2 DeviceLink always uses the same units irrespective of the plane. Since you don't know whether the numbers from CoD are in mph or kmph you can't automatically convert them to the right values for the DeviceLink protocol.
+
+IMO there are quite a lot of advantages to using fixed units for the parameters. It's generally very easy to adjust a gauge to display in mph even if the input data is kmph, but without fixed units it's impossible to make a set of generic gauges that are usable for every plane. Not having fixed units also makes compatibility with existing tools and protocols difficult, as all of the protocols I know are built around fixed units.
